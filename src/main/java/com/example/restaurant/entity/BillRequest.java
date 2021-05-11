@@ -1,4 +1,4 @@
-package com.example.dealership.entity;
+package com.example.restaurant.entity;
 
 import lombok.Data;
 @Data

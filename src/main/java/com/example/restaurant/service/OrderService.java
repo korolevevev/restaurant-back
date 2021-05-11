@@ -1,17 +1,16 @@
-package com.example.dealership.service;
+package com.example.restaurant.service;
 
-import com.example.dealership.entity.BillRequest;
-import com.example.dealership.entity.Order;
-import com.example.dealership.entity.Dish;
-import com.example.dealership.repository.DishRepository;
-import com.example.dealership.repository.OrderRepository;
+import com.example.restaurant.entity.BillRequest;
+import com.example.restaurant.entity.Order;
+import com.example.restaurant.entity.Dish;
+import com.example.restaurant.repository.DishRepository;
+import com.example.restaurant.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class OrderService {

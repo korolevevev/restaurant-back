@@ -1,19 +1,15 @@
-package com.example.dealership.controller;
+package com.example.restaurant.controller;
 
-import com.example.dealership.entity.BillRequest;
-import com.example.dealership.entity.Dish;
-import com.example.dealership.entity.Order;
-import com.example.dealership.repository.DishRepository;
-import com.example.dealership.repository.OrderRepository;
-import com.example.dealership.service.DishService;
-import com.example.dealership.service.OrderService;
-import org.aspectj.weaver.ast.Or;
+import com.example.restaurant.entity.BillRequest;
+import com.example.restaurant.entity.Dish;
+import com.example.restaurant.entity.Order;
+import com.example.restaurant.service.DishService;
+import com.example.restaurant.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Id;
 import java.util.List;
 import java.util.Optional;
 

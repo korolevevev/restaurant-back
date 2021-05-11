@@ -1,7 +1,7 @@
-package com.example.dealership.service;
+package com.example.restaurant.service;
 
-import com.example.dealership.entity.Dish;
-import com.example.dealership.repository.DishRepository;
+import com.example.restaurant.entity.Dish;
+import com.example.restaurant.repository.DishRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
