@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Сервис для заказов, который через репозиторий обращается к ORM
+ * Нужен для скрытия данных от RESTapi (чтобы REST обращался именно к сервису c помощью методов CRUD)
+ */
 @Service
 public class OrderService {
     @Autowired
@@ -19,6 +23,10 @@ public class OrderService {
     @Autowired
     private DishRepository dishRepository;
 
+    /**
+     * Метод для создания нового заказа с привязыванием к нему спсика блюд
+     * @param billRequest передаём, поскольку при формировании чека класса Order недостаточно, нужен список блюд
+     */
     public void create(BillRequest billRequest){
         Order order = orderRepository.save(billRequest.getOrder());
         List<Long> dishesIds = Arrays.asList(billRequest.getDishList());
@@ -31,14 +39,27 @@ public class OrderService {
         orderRepository.save(order);
     }
 
+    /**
+     * Поиск всех заказов
+     * @return обраащется к репозиторию через ORM и вытаскивает все заказы
+     */
     public List<Order> findAll(){
         return orderRepository.findAll();
     }
 
+    /**
+     * Поиск конкретного заказа
+     * @return обраащется к репозиторию через ORM и вытаскивает заказ по id
+     */
     public Order findById(Long id) {
         return orderRepository.findById(id).orElseThrow();
     }
 
+    /**
+     * Метод для изменения данных о заказе
+     * @param order передаём экземпляр конкретного заказа
+     * @param id id заказа
+     */
     public void update(Order order, Long id){
         var updatedOrder = orderRepository.findById(id);
 
@@ -54,10 +75,12 @@ public class OrderService {
             _updatedOrder.setPaid(order.getPaid() != null ? order.getPaid() : _updatedOrder.getPaid());
             orderRepository.save(_updatedOrder);
         }
-
-
     }
 
+    /**
+     * Удаление конкретного заказа
+     * @return обраащется к репозиторию через ORM и удаляет заказ по id
+     */
     public String DeleteById(Long id) {
         orderRepository.deleteById(id);
         return  "Заказ удалён";

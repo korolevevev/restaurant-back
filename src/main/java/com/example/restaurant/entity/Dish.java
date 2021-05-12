@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * В данном классе объявляем основные параметры объекта Блюда,
+ * с помощью декоратора Data автоматически создаём get/set методы для них
+ */
 @Entity
 @NoArgsConstructor
 @Table(name = "dishes")
@@ -24,7 +28,9 @@ public class Dish {
     private Boolean allergic;
     private Integer price;
 
-
+    /**
+     * Соединяем таблицу Dishes с Orders с помощью Bills на основе dishList (списка блюд)
+     */
     @ManyToMany(mappedBy = "dishList", cascade = CascadeType.PERSIST)
     @JsonIgnore
     private List<Order> orderList;

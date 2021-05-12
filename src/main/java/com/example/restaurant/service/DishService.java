@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Сервис для блюд, который через репозиторий обращается к ORM
+ * Нужен для скрытия данных от RESTapi (чтобы REST обращался именно к сервису с помощью методов CRUD)
+ */
 @Service
 public class DishService {
     @Autowired
@@ -18,6 +22,11 @@ public class DishService {
         return dishRepository.findAll();
     }
 
+    /**
+     * Метод для изменения данных о блюде
+     * @param dish передаём экземпляр объекта Блюда
+     * @return обращаемся к репозиторию через ORM и запрашиваем информацию о всех блюдах
+     */
     public List<Dish> update(Dish dish){
         var updatedDish = dishRepository.findById(dish.getId());
 
@@ -37,14 +46,26 @@ public class DishService {
         return dishRepository.findAll();
     }
 
+    /**
+     * Поиск всех блюд
+     * @return обраащется к репозиторию через ORM и вытаскивает все блюда
+     */
     public List<Dish> findAll(){
         return dishRepository.findAll();
     }
 
+    /**
+     * Поиск конкретного блюда
+     * @return обраащется к репозиторию через ORM и вытаскивает блюдо по id
+     */
     public Optional<Dish> findById(Long id) {
         return dishRepository.findById(id);
     }
-    
+
+    /**
+     * Удаление конкретного блюда
+     * @return обраащется к репозиторию через ORM и удаляет блюдо по id
+     */
     public String DeleteById(Long id) {
         dishRepository.deleteById(id);
         return  "Блюдо удалено";

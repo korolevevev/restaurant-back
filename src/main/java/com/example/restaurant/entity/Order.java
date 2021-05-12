@@ -6,6 +6,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * В данном классе объявляем основные параметры объекта Заказа,
+ * с помощью декоратора Data автоматически создаём get/set методы для них
+ */
 @Entity
 @NoArgsConstructor
 @Table(name = "orders")
@@ -23,6 +27,9 @@ public class Order {
     public Integer total;
     public Boolean paid;
 
+    /**
+     * Создаём промежуточную таблицу Bills, в которой соединяем Orders/Dishes по полям id
+     */
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "bills",
