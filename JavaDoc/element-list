@@ -1,0 +1,5 @@
+com.example.restaurant
+com.example.restaurant.controller
+com.example.restaurant.entity
+com.example.restaurant.repository
+com.example.restaurant.service
